@@ -1,0 +1,41 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    background-color: #18181b;
+    color: #E6E6E8;
+}
+
+header {
+    width: 100%;
+    text-align: center;
+    border: orange solid 1px;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    margin: 1rem auto;
+}
+
+header h1 {
+    margin:  1rem;
+}
+
+.sketchContainer {
+    padding: 2rem;
+    border: orange 1px solid;
+    width: 100%;
+}
+
+footer {
+    position: absolute;
+    text-align: center;
+    margin: 1rem auto;
+    bottom: 10px;
+    border: orange 1px solid;
+    width: 100%;
+}
