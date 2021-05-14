@@ -77,25 +77,35 @@ footer {
     -webkit-box-shadow: 10px 10px 65px -18px rgba(0,0,0,0.65);
 }
 
-.slide {
-    appearance: none;
-    width: 100%;
-    background: #101202;
-    outline: none;
-    opacity: 0.7;
-    transition: opacity .2s;
+.slideContainer {
+    opacity: 0.8;
+    transition: .2s;
     -webkit-transition: .2s;
 }
 
-slider:hover {
+.slider {
+    appearance: none;
+    height: 2px;
+    border-radius: 1px;
+    width: 100%;
+    background: #111;
+    outline: none;
+    opacity: 0.8;
+    transition: .2s;
+    -webkit-transition: .2s;
+}
+
+.slider:hover {
     opacity: 1;
 }
 
+.slideContainer:hover {
+    opacity: 1;
+    scale: 1.1;
+}
+
 .slider::-webkit-slider-thumb {
-    appearance: none;
-    width: 1.4rem;
-    height: 1.4rem;
-    background: #04AA6D;
+    background: #111;
     cursor: pointer;
 }
 
@@ -116,6 +126,10 @@ slider:hover {
 .option {
     margin: 1rem;
 }
+
+/* ####################################################################### */
+/* Media query */
+/* ####################################################################### */
 
 @media screen and (max-width: 600px) {
 
