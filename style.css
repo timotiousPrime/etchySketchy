@@ -111,6 +111,7 @@ footer {
 }
 
 .sketchPadArea {
+    display: grid;
     border-radius: .4rem;
     background-color: #FFF;
     margin: .6rem 3rem;
@@ -126,6 +127,11 @@ footer {
 
 .option {
     margin: 1rem;
+}
+
+.sketchPixel {
+    border: #111 1px solid;
+    
 }
 
 /* ####################################################################### */
