@@ -48,9 +48,8 @@ sketchPadArea.setAttribute('style', `grid-template-columns: ${gridColumns}`);
 
 // Adds colour to each pixel that your mouse goes over
 function addcolor(e) {
-    console.log(e.target.id)
     pixelId = '#' + e.target.id
-    console.log('The ID of the pixel is ' + pixelId)
+    console.log('The ID of the pixel to change color is ' + pixelId)
     pixel = document.querySelector(pixelId);
     pixel.setAttribute('style', 'background: blue')
 }
