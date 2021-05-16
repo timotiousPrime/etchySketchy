@@ -59,10 +59,24 @@ function applyRandomColor(e) {
     sketchPadArea.addEventListener('mouseover', (e) => {
         pixelId = '#' + e.target.id;
         //console.log('The ID of the pixel to change color is ' + pixelId)
-        pixel = document.querySelector(pixelId);
+        let pixel = document.querySelector(pixelId);
         pixel.setAttribute('style', `background: ${randomColor()}`);
     })
 }
+//
+
+// Applies a random color to each pixel
+function clearSketchColor() {
+    console.log('Sketch is cleared');
+    for (let i=1; i <= sketchPadSize; i++) {
+        let pixelName = 'pixel' + `${i}`;
+        let pixel = document.querySelector('#' + pixelName);
+        pixel.setAttribute('style', 'background: white');
+    }
+    //let pixels = document.querySelectorAll('.sketchPixels');
+    //pixels.setAttribute('style', `background: rgb(0,0,0)`);
+}
+
 //
 
 
@@ -70,7 +84,7 @@ function applyRandomColor(e) {
 function addcolor(e) {
     pixelId = '#' + e.target.id;
     //console.log('The ID of the pixel to change color is ' + pixelId)
-    pixel = document.querySelector(pixelId);
+    let pixel = document.querySelector(pixelId);
     pixel.setAttribute('style', 'background: red');
 
 }
@@ -83,3 +97,6 @@ sketchPadArea.addEventListener('mouseover', addcolor);
 let rainbowColors = document.getElementById('colorRandomizer');
 rainbowColors.addEventListener('click', applyRandomColor);
 // 
+
+let clearSketch = document.getElementById('clearSketch')
+clearSketch.addEventListener('click', clearSketchColor)
