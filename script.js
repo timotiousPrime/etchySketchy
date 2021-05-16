@@ -45,14 +45,24 @@ for (let i=1; i <= sketchPadSize; i++) {
 sketchPadArea.setAttribute('style', `grid-template-columns: ${gridColumns}`);
 //
 
+function randomColor() {
+    randomColorPart1 = Math.floor((Math.random() * 256) + 1)
+    randomColorPart2 = Math.floor((Math.random() * 256) + 1)
+    randomColorPart3 = Math.floor((Math.random() * 256) + 1)
+    return `rgb(${randomColorPart1}, ${randomColorPart2}, ${randomColorPart3})`
+}
 
 // Adds colour to each pixel that your mouse goes over
 function addcolor(e) {
     pixelId = '#' + e.target.id
     //console.log('The ID of the pixel to change color is ' + pixelId)
     pixel = document.querySelector(pixelId);
-    pixel.setAttribute('style', 'background: blue')
+    pixel.setAttribute('style', 'background: red')
+    pixel.setAttribute('style', `background: ${randomColor()}` )
 }
 
 sketchPadArea.addEventListener('mouseover', addcolor)
 //
+
+
+console.log(randomColor())
