@@ -52,17 +52,28 @@ function randomColor() {
     return `rgb(${randomColorPart1}, ${randomColorPart2}, ${randomColorPart3})`
 }
 
+function applyRandomColor(e) {
+    console.log('rainbow mode has been activated')
+    sketchPadArea.addEventListener('mouseover', (e) => {
+        pixelId = '#' + e.target.id
+        //console.log('The ID of the pixel to change color is ' + pixelId)
+        pixel = document.querySelector(pixelId);
+        pixel.setAttribute('style', `background: ${randomColor()}`)
+    })
+}
+
 // Adds colour to each pixel that your mouse goes over
 function addcolor(e) {
     pixelId = '#' + e.target.id
     //console.log('The ID of the pixel to change color is ' + pixelId)
     pixel = document.querySelector(pixelId);
     pixel.setAttribute('style', 'background: red')
-    pixel.setAttribute('style', `background: ${randomColor()}` )
+
 }
 
 sketchPadArea.addEventListener('mouseover', addcolor)
+
+let rainbowColors = document.getElementById('colorRandomizer')
+rainbowColors.addEventListener('click', applyRandomColor)
+
 //
-
-
-console.log(randomColor())
