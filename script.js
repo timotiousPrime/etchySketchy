@@ -37,7 +37,7 @@ for (let i=1; i <= sketchPadSize; i++) {
     sketchPadArea.appendChild(newDiv);
     sketchPixel.textContent = `${i}`;
     newDiv.classList.add('sketchPixel');
-    let idName = 'pixel' + `${i}`
+    let idName = 'pixel' + `${i}`;
     newDiv.setAttribute('id', `${idName}`);
 }
 
@@ -46,34 +46,40 @@ sketchPadArea.setAttribute('style', `grid-template-columns: ${gridColumns}`);
 //
 
 function randomColor() {
-    randomColorPart1 = Math.floor((Math.random() * 256) + 1)
-    randomColorPart2 = Math.floor((Math.random() * 256) + 1)
-    randomColorPart3 = Math.floor((Math.random() * 256) + 1)
-    return `rgb(${randomColorPart1}, ${randomColorPart2}, ${randomColorPart3})`
+    randomColorPart1 = Math.floor((Math.random() * 256) + 1);
+    randomColorPart2 = Math.floor((Math.random() * 256) + 1);
+    randomColorPart3 = Math.floor((Math.random() * 256) + 1);
+    return `rgb(${randomColorPart1}, ${randomColorPart2}, ${randomColorPart3})`;
 }
 
+
+// Applies a random color to each pixel
 function applyRandomColor(e) {
-    console.log('rainbow mode has been activated')
+    console.log('rainbow mode has been activated');
     sketchPadArea.addEventListener('mouseover', (e) => {
-        pixelId = '#' + e.target.id
+        pixelId = '#' + e.target.id;
         //console.log('The ID of the pixel to change color is ' + pixelId)
         pixel = document.querySelector(pixelId);
-        pixel.setAttribute('style', `background: ${randomColor()}`)
+        pixel.setAttribute('style', `background: ${randomColor()}`);
     })
 }
+//
+
 
 // Adds colour to each pixel that your mouse goes over
 function addcolor(e) {
-    pixelId = '#' + e.target.id
+    pixelId = '#' + e.target.id;
     //console.log('The ID of the pixel to change color is ' + pixelId)
     pixel = document.querySelector(pixelId);
-    pixel.setAttribute('style', 'background: red')
+    pixel.setAttribute('style', 'background: red');
 
 }
 
-sketchPadArea.addEventListener('mouseover', addcolor)
-
-let rainbowColors = document.getElementById('colorRandomizer')
-rainbowColors.addEventListener('click', applyRandomColor)
-
+//listens for when the mouse is over an of the sketch pixels and sets default color
+sketchPadArea.addEventListener('mouseover', addcolor);
 //
+
+// listens for when the rainbow button is pressed and then applies random color to pixels
+let rainbowColors = document.getElementById('colorRandomizer');
+rainbowColors.addEventListener('click', applyRandomColor);
+// 
