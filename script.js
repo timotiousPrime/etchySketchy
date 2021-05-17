@@ -16,6 +16,7 @@ let sketchPadArea = document.querySelector('.sketchPadArea');
 
 // Set the number of columns for the sketch pad pixels
 let gridColumns = '';
+
 function addGridColumns() {
     for (let i=0; i < SLIDER.value; i++) {
         gridColumns += ' auto';
