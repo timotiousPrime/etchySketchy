@@ -51,7 +51,7 @@ function randomColor() {
 
 
 // Applies a random color to each pixel
-function applyRandomColor(e) {
+function applyRandomColor() {
     console.log('rainbow mode has been activated');
     sketchPadArea.addEventListener('mouseover', (e) => {
         pixelId = '#' + e.target.id;
