@@ -84,9 +84,6 @@ function getColorValue(){
 }
 
 
-
-
-
 // Adds colour to each pixel that your mouse goes over
 function addcolor(e) {
     pixelId = '#' + e.target.id;
