@@ -13,10 +13,6 @@ SLIDER.oninput = function() {
 let sketchPixel = document.createElement('div');
 let sketchPadArea = document.querySelector('.sketchPadArea');
 
-function createPixel(){
-    sketchPixel;
-    ;
-}
 
 // Set the number of columns for the sketch pad pixels
 let gridColumns = '';
