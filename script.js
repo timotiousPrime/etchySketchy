@@ -13,13 +13,10 @@ SLIDER.oninput = function() {
 let sketchPixel = document.createElement('div');
 let sketchPadArea = document.querySelector('.sketchPadArea');
 
-function createPixel(){
-    sketchPixel;
-    ;
-}
 
 // Set the number of columns for the sketch pad pixels
 let gridColumns = '';
+
 function addGridColumns() {
     for (let i=0; i < SLIDER.value; i++) {
         gridColumns += ' auto';
@@ -54,7 +51,7 @@ function randomColor() {
 
 
 // Applies a random color to each pixel
-function applyRandomColor(e) {
+function applyRandomColor() {
     console.log('rainbow mode has been activated');
     sketchPadArea.addEventListener('mouseover', (e) => {
         pixelId = '#' + e.target.id;
@@ -79,14 +76,20 @@ function clearSketchColor() {
 
 //
 
+// Get the color set by user/ default color
+function getColorValue(){
+    let colorInput = document.getElementById('colorInput');
+    colorValue = colorInput.value
+    return colorValue
+}
+
 
 // Adds colour to each pixel that your mouse goes over
 function addcolor(e) {
     pixelId = '#' + e.target.id;
     //console.log('The ID of the pixel to change color is ' + pixelId)
     let pixel = document.querySelector(pixelId);
-    pixel.setAttribute('style', 'background: red');
-
+    pixel.setAttribute('style', `background: ${getColorValue()}`);
 }
 
 //listens for when the mouse is over an of the sketch pixels and sets default color
