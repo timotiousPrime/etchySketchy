@@ -1,18 +1,15 @@
 // Slider value
-
 const SLIDER = document.getElementById('sizeRangeSlider');
-console.log(`The grid size is ${SLIDER.value}x${SLIDER.value}`);
+
+// Display size of sketch pad under the slider input
+let gridInfo = document.querySelector('.sketchPadSizeInfo')
+gridInfo.textContent = `The sketch pad size is ${SLIDER.value}x${SLIDER.value}` 
 
 let sketchPadSize = SLIDER.value * SLIDER.value;
-console.log(`The sketch pad has ${sketchPadSize} pixels`);
-
-SLIDER.oninput = function() {
-    console.log(`The grid has been changed to the size of ${SLIDER.value}`);
-}
+console.log(`The start sketch pad has ${sketchPadSize} pixels`);
 
 let sketchPixel = document.createElement('div');
 let sketchPadArea = document.querySelector('.sketchPadArea');
-
 
 // Set the number of columns for the sketch pad pixels
 let gridColumns = '';
@@ -27,19 +24,36 @@ function addGridColumns() {
 gridColumns = addGridColumns();
 
 // add pixels per number set by slider
-console.log(`The grid should be ${sketchPadSize} pixels`);
 
-for (let i=1; i <= sketchPadSize; i++) {
-    let newDiv = document.createElement('div');
-    sketchPadArea.appendChild(newDiv);
-    sketchPixel.textContent = `${i}`;
-    newDiv.classList.add('sketchPixel');
-    let idName = 'pixel' + `${i}`;
-    newDiv.setAttribute('id', `${idName}`);
+function displayGridSize(){
+    let gridInfo = document.querySelector('.sketchPadSizeInfo')
+    gridInfo.textContent = `The sketch pad size is ${SLIDER.value}x${SLIDER.value}`    
 }
 
+SLIDER.addEventListener('input', () => {
+    console.log(`The total grid size is ${SLIDER.value}x${SLIDER.value}#####`)
+    displayGridSize(); // Update to the new size of the sketch pad
+    
+    gridColumns = addGridColumns();
 
-sketchPadArea.setAttribute('style', `grid-template-columns: ${gridColumns}`);
+    sketchPadSize = SLIDER.value * SLIDER.value;
+    console.log(`The sketch pad has ${sketchPadSize} pixels####`);
+
+        
+    for (let i=1; i <= sketchPadSize; i++) {
+        let newDiv = document.createElement('div');
+        sketchPadArea.appendChild(newDiv);
+        sketchPixel.textContent = `${i}`;
+        newDiv.classList.add('sketchPixel');
+        let idName = 'pixel' + `${i}`;
+        newDiv.setAttribute('id', `${idName}`);
+    }
+
+
+    sketchPadArea.setAttribute('style', `grid-template-columns: ${gridColumns}`);
+
+    
+})
 //
 
 

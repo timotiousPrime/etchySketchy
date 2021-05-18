@@ -128,6 +128,10 @@ footer {
     cursor: pointer;
 }
 
+.sketchPadSizeInfo {
+    margin: .6rem auto;
+}
+
 .sketchPadArea {
     display: grid;
     border-radius: .4rem;
@@ -150,7 +154,7 @@ footer {
 
 .active {
     border-radius: .4rem;
-    color: #63e0ebd0;
+    color: #eb6e63;
     background-color: #6e63eb;
     transform: scale(1.02);
     -webkit-box-shadow: 0px 2px 21px 7px rgba(99, 224, 235, 0.816); 
