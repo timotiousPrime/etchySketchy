@@ -125,14 +125,19 @@ footer {
     cursor: pointer;
 }
 
+.sketchPadSquare {
+    width: 100%;
+    
+}
+
 .sketchPadArea {
     display: grid;
     border-radius: .4rem;
     background-color: #FFF;
     margin: .6rem 3rem;
     border: #cfd1c2 4px solid;
-    max-height: 500px;
-    max-width: 500px;
+    max-height: 600px;
+    max-width: 600px;
     min-height: 400px;
     min-width: 400px;
     box-shadow: 10px 10px 65px -18px rgba(0,0,0,0.65);
