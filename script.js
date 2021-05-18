@@ -42,52 +42,37 @@ for (let i=1; i <= sketchPadSize; i++) {
 sketchPadArea.setAttribute('style', `grid-template-columns: ${gridColumns}`);
 //
 
+
+// returns a random color 
 function randomColor() {
     randomColorPart1 = Math.floor((Math.random() * 256) + 1);
     randomColorPart2 = Math.floor((Math.random() * 256) + 1);
     randomColorPart3 = Math.floor((Math.random() * 256) + 1);
     return `rgb(${randomColorPart1}, ${randomColorPart2}, ${randomColorPart3})`;
 }
+//
 
+// Listens for when rainbow mode has been activated
 let rainbowColors = document.getElementById('colorRandomizer');
 
 function activateRainbow(){
     rainbowColors.classList.toggle('active');
-    if (rainbowColors.classList.value === 'active') {
-        applyRandomColor();
-    } else {
-        addColor();
-    };
-
-}
-
-// Applies a random color to each pixel
-function applyRandomColor() {
-    console.log('rainbow mode has been activated');
-    sketchPadArea.addEventListener('mouseover', (e) => {
-        pixelId = '#' + e.target.id;
-        console.log('The ID of the pixel to change color is ' + pixelId)
-        let pixel = document.querySelector(pixelId);
-        console.log(`the color of the pixel is ${randomColor}`)
-        pixel.setAttribute('style', `background: ${randomColor()}`);
-    })
 }
 //
 
-// Adds colour to each pixel that your mouse goes over
-function addColor() {
-    sketchPadArea.addEventListener('mouseover', (e) => {
-        let pixelId = '#' + e.target.id;
-        //console.log('The ID of the pixel to change color is ' + pixelId)
-        let pixel = document.querySelector(pixelId);
-        //console.log(`the color of the pixel is ${getColorValue}` )
-        pixel.setAttribute('style', `background: ${getColorValue()}`);
-    })
-    
+// sets the colour to rainbow is rainbow mode is active
+// otherwise it uses the users settings
+function setColor(){
+    if (rainbowColors.classList.value === 'active') {
+        return randomColor();
+    } else {
+        return getColorValue();
+    }
 }
+//
 
 
-// Applies a random color to each pixel
+// Clears the sketch of colors
 function clearSketchColor() {
     console.log('Sketch is cleared');
     for (let i=1; i <= sketchPadSize; i++) {
@@ -95,11 +80,9 @@ function clearSketchColor() {
         let pixel = document.querySelector('#' + pixelName);
         pixel.setAttribute('style', 'background: white');
     }
-    //let pixels = document.querySelectorAll('.sketchPixels');
-    //pixels.setAttribute('style', `background: rgb(0,0,0)`);
 }
-
 //
+
 
 // Get the color set by user/ default color
 function getColorValue(){
@@ -110,7 +93,11 @@ function getColorValue(){
 
 
 //listens for when the mouse is over an of the sketch pixels and sets default color
-sketchPadArea.addEventListener('mouseover', addColor);
+sketchPadArea.addEventListener('mouseover', (e) => {
+    let pixelId = e.target.id;
+    let pixel = document.getElementById(pixelId);
+    pixel.setAttribute('style', `background: ${setColor()}`)
+});
 //
 
 
