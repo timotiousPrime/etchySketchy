@@ -135,9 +135,7 @@ footer {
     margin: .6rem 3rem;
     border: #cfd1c2 4px solid;
     max-height: 600px;
-    max-width: 600px;/*
-    min-height: 400px;
-    min-width: 400px;*/
+    max-width: 600px;
     width: 60vw;
     height: 60vw;
     box-shadow: 10px 10px 65px -18px rgba(0,0,0,0.65);
