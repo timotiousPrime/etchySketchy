@@ -2,58 +2,80 @@
 const SLIDER = document.getElementById('sizeRangeSlider');
 
 // Display size of sketch pad under the slider input
-let gridInfo = document.querySelector('.sketchPadSizeInfo')
-gridInfo.textContent = `The sketch pad size is ${SLIDER.value}x${SLIDER.value}` 
+function displayGridSize(){
+    let gridInfo = document.querySelector('.sketchPadSizeInfo')
+    gridInfo.textContent = `The sketch pad size is ${SLIDER.value}x${SLIDER.value}`    
+}
+//
 
+
+// Determine the number of pixels
 let sketchPadSize = SLIDER.value * SLIDER.value;
 console.log(`The start sketch pad has ${sketchPadSize} pixels`);
 
 let sketchPixel = document.createElement('div');
 let sketchPadArea = document.querySelector('.sketchPadArea');
 
-// Set the number of columns for the sketch pad pixels
-let gridColumns = '';
+function addPixels() {
+    for (let i=1; i <= sketchPadSize; i++) {
+        let newDiv = document.createElement('div');
+        sketchPadArea.appendChild(newDiv);
+        sketchPixel.textContent = i;
+        newDiv.classList.add('sketchPixel');
+        let idName = 'pixel' + `${i}`;
+        newDiv.setAttribute('id', `${idName}`);
+    }
+}
+//
 
+// Set the number of columns for the sketch pad pixels
 function addGridColumns() {
+    let gridColumns = '';
     for (let i=0; i < SLIDER.value; i++) {
         gridColumns += ' auto';
     }
     return gridColumns;
 }
+//
 
-gridColumns = addGridColumns();
-
-// add pixels per number set by slider
-
-function displayGridSize(){
-    let gridInfo = document.querySelector('.sketchPadSizeInfo')
-    gridInfo.textContent = `The sketch pad size is ${SLIDER.value}x${SLIDER.value}`    
+// Removes the divs in the sketch area
+function removeDivs() {
+    let existingPixels = document.querySelectorAll('.sketchPixel')
+    existingPixels.forEach(deleteDiv)
 }
 
-SLIDER.addEventListener('input', () => {
-    console.log(`The total grid size is ${SLIDER.value}x${SLIDER.value}#####`)
-    displayGridSize(); // Update to the new size of the sketch pad
-    
+function deleteDiv(pixel) {
+    pixel.remove()
+}
+//
+
+// Function to create sketch pad
+function updateSketchPad(){
+    // Removed previous Divs
+    removeDivs()
+    // Display the size of the grid
+    console.log(`The total grid size is ${SLIDER.value}x${SLIDER.value}`)
+    displayGridSize(); // Update to the new size of the sketch pad under the slider
+    // Set the number of columns the grid needs
     gridColumns = addGridColumns();
-
-    sketchPadSize = SLIDER.value * SLIDER.value;
-    console.log(`The sketch pad has ${sketchPadSize} pixels####`);
-
-        
-    for (let i=1; i <= sketchPadSize; i++) {
-        let newDiv = document.createElement('div');
-        sketchPadArea.appendChild(newDiv);
-        sketchPixel.textContent = `${i}`;
-        newDiv.classList.add('sketchPixel');
-        let idName = 'pixel' + `${i}`;
-        newDiv.setAttribute('id', `${idName}`);
-    }
-
-
+    // Update the sketch pad properties to grid size
     sketchPadArea.setAttribute('style', `grid-template-columns: ${gridColumns}`);
+    //Set number of pixels the grid needs
+    sketchPadSize = SLIDER.value * SLIDER.value
+    console.log(`The sketch pad has ${sketchPadSize} pixels`);
+    // add the pixels to the grid
+    addPixels()
+}
+//
 
-    
-})
+// Display the size when the page loads
+document.addEventListener('load', displayGridSize()); 
+
+// Set the sketch pad when the page loads
+document.addEventListener('load', updateSketchPad())
+
+// Update the sketch pad each time the value of the slider changes
+SLIDER.addEventListener('input', updateSketchPad)
 //
 
 
