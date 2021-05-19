@@ -3,7 +3,7 @@ const SLIDER = document.getElementById('sizeRangeSlider');
 
 // Display size of sketch pad under the slider input
 function displayGridSize(){
-    let gridInfo = document.querySelector('.sketchPadSizeInfo')
+    const gridInfo = document.querySelector('.sketchPadSizeInfo')
     gridInfo.textContent = `The sketch pad size is ${SLIDER.value}x${SLIDER.value}`    
 }
 //
@@ -13,12 +13,12 @@ function displayGridSize(){
 let sketchPadSize = SLIDER.value * SLIDER.value;
 console.log(`The start sketch pad has ${sketchPadSize} pixels`);
 
-let sketchPixel = document.createElement('div');
-let sketchPadArea = document.querySelector('.sketchPadArea');
+const sketchPixel = document.createElement('div');
+const sketchPadArea = document.querySelector('.sketchPadArea');
 
 function addPixels() {
     for (let i=1; i <= sketchPadSize; i++) {
-        let newDiv = document.createElement('div');
+        const newDiv = document.createElement('div');
         sketchPadArea.appendChild(newDiv);
         sketchPixel.textContent = i;
         newDiv.classList.add('sketchPixel');
@@ -40,7 +40,7 @@ function addGridColumns() {
 
 // Removes the divs in the sketch area
 function removeDivs() {
-    let existingPixels = document.querySelectorAll('.sketchPixel')
+    const existingPixels = document.querySelectorAll('.sketchPixel')
     existingPixels.forEach(deleteDiv)
 }
 
@@ -113,7 +113,7 @@ function clearSketchColor() {
     console.log('Sketch is cleared');
     for (let i=1; i <= sketchPadSize; i++) {
         let pixelName = 'pixel' + `${i}`;
-        let pixel = document.querySelector('#' + pixelName);
+        const pixel = document.querySelector('#' + pixelName);
         pixel.setAttribute('style', 'background: white');
     }
 }
@@ -122,7 +122,7 @@ function clearSketchColor() {
 
 // Get the color set by user/ default color
 function getColorValue(){
-    let colorInput = document.getElementById('colorInput');
+    const colorInput = document.getElementById('colorInput');
     let colorValue = colorInput.value
     return colorValue
 }
@@ -131,7 +131,7 @@ function getColorValue(){
 //listens for when the mouse is over an of the sketch pixels and sets default color
 sketchPadArea.addEventListener('mouseover', (e) => {
     let pixelId = e.target.id;
-    let pixel = document.getElementById(pixelId);
+    const pixel = document.getElementById(pixelId);
     pixel.setAttribute('style', `background: ${setColor()}`)
 });
 //
@@ -141,5 +141,5 @@ sketchPadArea.addEventListener('mouseover', (e) => {
 rainbowColors.addEventListener('click', activateRainbow);
 // 
 
-let clearSketch = document.getElementById('clearSketch')
+const clearSketch = document.getElementById('clearSketch')
 clearSketch.addEventListener('click', clearSketchColor)
